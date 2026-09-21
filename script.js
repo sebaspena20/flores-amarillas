@@ -379,8 +379,8 @@ function mostrarRespuestaComida(
         pizza:
             "Sabía que había algo importante que descubrir aquí. 🍕",
 
-        hamburguesa:
-            "Una elección bastante seria. 😂🍔",
+        labandera:
+            "Una elección bastante seria. 😂🍗",
 
         sushi:
             "Ok... veo que tenemos gustos interesantes. 🍣",
