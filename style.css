@@ -29,8 +29,12 @@ body {
     color:
         #55464c;
 
-    overflow:
+    overflow-y:
+        auto;
+
+    overflow-x:
         hidden;
+
 }
 
 
@@ -1430,4 +1434,40 @@ h2 {
 
     }
 
+}
+
+/* =====================================
+   MENSAJE DESPLAZABLE
+===================================== */
+
+#mensaje {
+    overflow-y: auto;
+    align-items: flex-start;
+}
+
+#mensaje .contenido {
+    padding-top: 80px;
+    padding-bottom: 100px;
+}
+
+#mensajeEscritura {
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 0 15px;
+}
+
+
+/* Barra de desplazamiento */
+
+#mensaje::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mensaje::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#mensaje::-webkit-scrollbar-thumb {
+    background: #e7a8b7;
+    border-radius: 10px;
 }

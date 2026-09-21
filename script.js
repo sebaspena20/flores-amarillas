@@ -587,48 +587,38 @@ Feliz día de las Flores Amarillas. 🌻`;
     let posicion = 0;
 
 
-    function escribir() {
+function escribir() {
 
-        if (
-            posicion <
-            texto.length
-        ) {
+    if (
+        posicion <
+        texto.length
+    ) {
 
-            elemento.textContent +=
-                texto.charAt(posicion);
+        elemento.textContent +=
+            texto.charAt(posicion);
 
-
-            posicion++;
-
-
-            setTimeout(
-                escribir,
-                30
-            );
-
-        } else {
-
-            setTimeout(() => {
-
-                document
-                    .getElementById(
-                        "btnSecreto"
-                    )
-                    .classList
-                    .add(
-                        "mostrar"
-                    );
-
-            }, 1200);
-
-        }
-
-    }
+        posicion++;
 
 
-    escribir();
+        /* Desplazar suavemente hacia abajo */
 
-}
+        elemento.parentElement.scrollTo({
+
+            top:
+                elemento.parentElement.scrollHeight,
+
+            behavior:
+                "smooth"
+
+        });
+
+
+        setTimeout(
+            escribir,
+            30
+        );
+
+    } else {
 
 
 
