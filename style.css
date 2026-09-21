@@ -1,74 +1,101 @@
 /* =====================================
-   CAMBIO DE PANTALLA
+   RESET
 ===================================== */
 
-function cambiarPantalla(id) {
-
-    document
-        .querySelectorAll(".pantalla")
-        .forEach(pantalla => {
-
-            pantalla.classList.remove("activa");
-
-        });
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 
-    document
-        .getElementById(id)
-        .classList.add("activa");
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
 
+
+body {
+
+    font-family:
+        "Segoe UI",
+        Arial,
+        sans-serif;
+
+    background:
+        #fff7fa;
+
+    color:
+        #55464c;
+
+    overflow:
+        hidden;
 }
 
 
 
 /* =====================================
-   PÉTALOS
+   PANTALLAS
 ===================================== */
 
-function crearPetalo() {
+.pantalla {
 
-    const petalo =
-        document.createElement("div");
+    position: fixed;
 
+    inset: 0;
 
-    petalo.className =
-        "petalito";
+    display: flex;
 
+    align-items: center;
 
-    petalo.textContent =
-        "🌼";
+    justify-content: center;
 
+    padding: 25px;
 
-    petalo.style.left =
-        Math.random() * 100 + "vw";
+    opacity: 0;
 
+    visibility: hidden;
 
-    petalo.style.fontSize =
-        12 + Math.random() * 15 + "px";
+    transform:
+        scale(1.04);
 
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s;
 
-    petalo.style.animationDuration =
-        5 + Math.random() * 5 + "s";
-
-
-    document
-        .getElementById("petals")
-        .appendChild(petalo);
-
-
-    setTimeout(() => {
-
-        petalo.remove();
-
-    }, 10000);
+    background:
+        radial-gradient(
+            circle at center,
+            #fffdfd,
+            #ffeff6
+        );
 
 }
 
 
-setInterval(
-    crearPetalo,
-    1200
-);
+.pantalla.activa {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        scale(1);
+
+}
+
+
+.contenido {
+
+    width: 100%;
+
+    max-width: 760px;
+
+    text-align: center;
+
+}
 
 
 
@@ -76,61 +103,436 @@ setInterval(
    INICIO
 ===================================== */
 
-document
-    .getElementById("btnComenzar")
-    .addEventListener(
-        "click",
-        () => {
+.flor-icono {
 
-            cambiarPantalla(
-                "semilla"
-            );
+    font-size:
+        80px;
 
+    animation:
+        flotar 3s infinite ease-in-out;
 
-            setTimeout(() => {
-
-                document
-                    .getElementById(
-                        "textoFlor"
-                    )
-                    .classList
-                    .add("mostrar");
-
-            }, 3500);
+}
 
 
-            setTimeout(() => {
+.pequeno {
 
-                document
-                    .getElementById(
-                        "btnFlor"
-                    )
-                    .classList
-                    .add("mostrar");
+    color:
+        #a27c88;
 
-            }, 4800);
+    margin-top:
+        15px;
 
-        }
-    );
+    font-size:
+        0.95rem;
+
+}
+
+
+h1 {
+
+    color:
+        #bd3552;
+
+    font-size:
+        clamp(
+            2.3rem,
+            9vw,
+            4.5rem
+        );
+
+    margin:
+        10px 0;
+
+}
+
+
+.subtitulo {
+
+    color:
+        #806c74;
+
+    line-height:
+        1.7;
+
+    margin:
+        20px 0 35px;
+
+}
 
 
 
 /* =====================================
-   FLOR
+   BOTONES
 ===================================== */
 
-document
-    .getElementById("btnFlor")
-    .addEventListener(
-        "click",
-        () => {
+button {
 
-            cambiarPantalla(
-                "caracteristicas"
-            );
+    border:
+        none;
 
-        }
-    );
+    cursor:
+        pointer;
+
+    font-family:
+        inherit;
+
+}
+
+
+.contenido > button {
+
+    padding:
+        15px 30px;
+
+    border-radius:
+        50px;
+
+    background:
+        #d33c59;
+
+    color:
+        white;
+
+    font-size:
+        1rem;
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            211,
+            60,
+            89,
+            0.25
+        );
+
+    transition:
+        0.3s;
+
+}
+
+
+.contenido > button:hover {
+
+    transform:
+        translateY(-3px);
+
+    box-shadow:
+        0 15px 35px
+        rgba(
+            211,
+            60,
+            89,
+            0.35
+        );
+
+}
+
+
+
+/* =====================================
+   SEMILLA
+===================================== */
+
+.texto-suave {
+
+    font-size:
+        1.25rem;
+
+    margin-bottom:
+        10px;
+
+    color:
+        #765f68;
+
+}
+
+
+#planta {
+
+    position:
+        relative;
+
+    width:
+        240px;
+
+    height:
+        350px;
+
+    margin:
+        auto;
+
+}
+
+
+.tallo {
+
+    position:
+        absolute;
+
+    bottom:
+        10px;
+
+    left:
+        50%;
+
+    width:
+        7px;
+
+    height:
+        0;
+
+    transform:
+        translateX(-50%);
+
+    background:
+        #659250;
+
+    border-radius:
+        10px;
+
+    animation:
+        crecerTallo 2s
+        forwards;
+
+}
+
+
+.hoja {
+
+    position:
+        absolute;
+
+    width:
+        80px;
+
+    height:
+        38px;
+
+    background:
+        #80a961;
+
+    opacity:
+        0;
+
+    border-radius:
+        100% 0 100% 0;
+
+}
+
+
+.hoja-izquierda {
+
+    left:
+        35px;
+
+    bottom:
+        115px;
+
+    transform:
+        rotate(-25deg);
+
+    animation:
+        aparecerHoja 1s
+        1.5s forwards;
+
+}
+
+
+.hoja-derecha {
+
+    right:
+        35px;
+
+    bottom:
+        165px;
+
+    transform:
+        rotate(205deg);
+
+    animation:
+        aparecerHoja 1s
+        1.8s forwards;
+
+}
+
+
+.flor-creciendo {
+
+    position:
+        absolute;
+
+    top:
+        15px;
+
+    left:
+        50%;
+
+    width:
+        130px;
+
+    height:
+        130px;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    animation:
+        crecerFlor 1.4s
+        2.3s forwards;
+
+}
+
+
+.petalo {
+
+    position:
+        absolute;
+
+    width:
+        65px;
+
+    height:
+        65px;
+
+    left:
+        32px;
+
+    top:
+        32px;
+
+    background:
+        #ffd43b;
+
+    border-radius:
+        50%;
+
+}
+
+
+.p1 {
+    transform:
+        translateY(-35px);
+}
+
+.p2 {
+    transform:
+        rotate(60deg)
+        translateY(-35px);
+}
+
+.p3 {
+    transform:
+        rotate(120deg)
+        translateY(-35px);
+}
+
+.p4 {
+    transform:
+        rotate(180deg)
+        translateY(-35px);
+}
+
+.p5 {
+    transform:
+        rotate(240deg)
+        translateY(-35px);
+}
+
+.p6 {
+    transform:
+        rotate(300deg)
+        translateY(-35px);
+}
+
+
+.centro-flor {
+
+    position:
+        absolute;
+
+    width:
+        50px;
+
+    height:
+        50px;
+
+    left:
+        40px;
+
+    top:
+        40px;
+
+    background:
+        #80501f;
+
+    border-radius:
+        50%;
+
+    z-index:
+        5;
+
+}
+
+
+
+/* =====================================
+   NÚMERO DE SECCIÓN
+===================================== */
+
+.numero {
+
+    display:
+        block;
+
+    color:
+        #d45b72;
+
+    font-size:
+        0.75rem;
+
+    letter-spacing:
+        3px;
+
+    margin-bottom:
+        15px;
+
+}
+
+
+
+/* =====================================
+   TÍTULOS
+===================================== */
+
+h2 {
+
+    color:
+        #b93250;
+
+    font-size:
+        clamp(
+            1.8rem,
+            7vw,
+            3rem
+        );
+
+    margin-bottom:
+        10px;
+
+}
+
+
+.instruccion,
+.pregunta {
+
+    color:
+        #8b747d;
+
+    margin-bottom:
+        30px;
+
+}
 
 
 
@@ -138,521 +540,400 @@ document
    TARJETAS
 ===================================== */
 
-const tarjetas =
-    document.querySelectorAll(
-        ".tarjeta"
-    );
+.tarjetas {
+
+    display:
+        flex;
+
+    justify-content:
+        center;
+
+    gap:
+        15px;
+
+    margin-bottom:
+        30px;
+
+}
 
 
-let tarjetasAbiertas = 0;
+.tarjeta {
+
+    position:
+        relative;
+
+    width:
+        150px;
+
+    height:
+        190px;
+
+    perspective:
+        1000px;
+
+    cursor:
+        pointer;
+
+}
 
 
-tarjetas.forEach(
-    tarjeta => {
+.frente,
+.atras {
 
-        tarjeta.addEventListener(
-            "click",
-            () => {
+    position:
+        absolute;
 
-                if (
-                    !tarjeta
-                        .classList
-                        .contains(
-                            "volteada"
-                        )
-                ) {
+    inset:
+        0;
 
-                    tarjeta
-                        .classList
-                        .add(
-                            "volteada"
-                        );
+    display:
+        flex;
 
-                    tarjetasAbiertas++;
+    flex-direction:
+        column;
 
-                }
+    justify-content:
+        center;
 
+    align-items:
+        center;
 
-                if (
-                    tarjeta.dataset.tipo
-                    === "comida"
-                ) {
+    padding:
+        18px;
 
-                    lluviaComida();
+    border-radius:
+        22px;
 
-                }
+    background:
+        white;
 
-
-                if (
-                    tarjetasAbiertas === 3
-                ) {
-
-                    setTimeout(() => {
-
-                        document
-                            .getElementById(
-                                "btnCaracteristicas"
-                            )
-                            .classList
-                            .add(
-                                "mostrar"
-                            );
-
-                    }, 700);
-
-                }
-
-            }
+    box-shadow:
+        0 12px 35px
+        rgba(
+            100,
+            60,
+            80,
+            0.10
         );
 
-    }
-);
+    backface-visibility:
+        hidden;
+
+    transition:
+        transform 0.7s;
+
+}
 
 
+.frente {
 
-/* =====================================
-   LLUVIA DE COMIDA
-===================================== */
+    font-size:
+        3rem;
 
-function lluviaComida() {
-
-    const comidas = [
-        "🍔",
-        "🍕",
-        "🍟",
-        "🍰",
-        "🍩",
-        "🍗",
-        "🍫"
-    ];
+}
 
 
-    for (
-        let i = 0;
-        i < 15;
-        i++
-    ) {
+.frente small {
 
-        const comida =
-            document.createElement(
-                "div"
-            );
+    display:
+        block;
 
+    font-size:
+        0.75rem;
 
-        comida.className =
-            "petalito";
+    color:
+        #a68b94;
 
+    margin-top:
+        10px;
 
-        comida.textContent =
-            comidas[
-                Math.floor(
-                    Math.random()
-                    * comidas.length
-                )
-            ];
+}
 
 
-        comida.style.left =
-            Math.random()
-            * 100 + "vw";
+.atras {
+
+    transform:
+        rotateY(180deg);
+
+}
 
 
-        comida.style.animationDuration =
-            3 + Math.random() * 3
-            + "s";
+.tarjeta.volteada .frente {
+
+    transform:
+        rotateY(180deg);
+
+}
 
 
-        document.body
-            .appendChild(comida);
+.tarjeta.volteada .atras {
+
+    transform:
+        rotateY(360deg);
+
+}
 
 
-        setTimeout(() => {
+.atras h3 {
 
-            comida.remove();
+    color:
+        #cf3d58;
 
-        }, 6000);
+    margin-bottom:
+        10px;
 
-    }
+}
+
+
+.atras p {
+
+    font-size:
+        0.82rem;
+
+    line-height:
+        1.5;
 
 }
 
 
 
 /* =====================================
-   IR AL JUEGO
+   JUEGO COMIDA
 ===================================== */
 
-document
-    .getElementById(
-        "btnCaracteristicas"
-    )
-    .addEventListener(
-        "click",
-        () => {
+.opciones-comida {
 
-            cambiarPantalla(
-                "juego"
-            );
+    display:
+        grid;
 
-        }
-    );
+    grid-template-columns:
+        repeat(2, 1fr);
 
+    gap:
+        15px;
 
+    max-width:
+        430px;
 
-/* =====================================
-   JUEGO DE COMIDA
-===================================== */
+    margin:
+        auto auto 25px;
 
-const opcionesComida =
-    document.querySelectorAll(
-        ".opcion-comida"
-    );
+}
 
 
-let comidaElegida = "";
+.opcion-comida {
 
+    padding:
+        25px;
 
-opcionesComida.forEach(
-    opcion => {
+    border:
+        2px solid
+        transparent;
 
-        opcion.addEventListener(
-            "click",
-            () => {
+    border-radius:
+        20px;
 
-                opcionesComida
-                    .forEach(
-                        item => {
+    background:
+        white;
 
-                            item.classList
-                                .remove(
-                                    "seleccionada"
-                                );
+    font-size:
+        2.7rem;
 
-                        }
-                    );
-
-
-                opcion.classList
-                    .add(
-                        "seleccionada"
-                    );
-
-
-                comidaElegida =
-                    opcion.dataset.comida;
-
-
-                mostrarRespuestaComida(
-                    comidaElegida
-                );
-
-
-                document
-                    .getElementById(
-                        "btnDespuesComida"
-                    )
-                    .classList
-                    .add(
-                        "mostrar"
-                    );
-
-            }
+    box-shadow:
+        0 10px 30px
+        rgba(
+            80,
+            50,
+            60,
+            0.08
         );
 
-    }
-);
+    transition:
+        0.3s;
+
+}
 
 
+.opcion-comida span {
 
-function mostrarRespuestaComida(
-    comida
-) {
+    display:
+        block;
 
-    const respuesta =
-        document.getElementById(
-            "respuestaComida"
-        );
+    font-size:
+        0.9rem;
 
+    margin-top:
+        8px;
 
-    const respuestas = {
+    color:
+        #7f6972;
 
-        pizza:
-            "Sabía que había algo importante que descubrir aquí. 🍕",
-
-        hamburguesa:
-            "Una elección bastante seria. 😂🍔",
-
-        sushi:
-            "Ok... veo que tenemos gustos interesantes. 🍣",
-
-        postre:
-            "No necesitaba más pruebas. El postre siempre tiene un lugar especial. 🍰"
-
-    };
+}
 
 
-    respuesta.textContent =
-        respuestas[comida];
+.opcion-comida:hover {
+
+    transform:
+        translateY(-5px);
+
+    border-color:
+        #f2b8c5;
+
+}
+
+
+.opcion-comida.seleccionada {
+
+    border-color:
+        #d43e5a;
+
+    background:
+        #fff1f5;
+
+}
+
+
+.respuesta {
+
+    min-height:
+        45px;
+
+    color:
+        #bd3552;
+
+    line-height:
+        1.6;
+
+    font-weight:
+        500;
 
 }
 
 
 
 /* =====================================
-   DESPUÉS DE COMIDA
+   FLORES
 ===================================== */
 
-document
-    .getElementById(
-        "btnDespuesComida"
-    )
-    .addEventListener(
-        "click",
-        () => {
+.flores-eleccion {
 
-            cambiarPantalla(
-                "eleccionFlor"
-            );
+    display:
+        flex;
 
-        }
-    );
+    justify-content:
+        center;
 
+    gap:
+        25px;
 
+    margin:
+        35px 0;
 
-/* =====================================
-   ELECCIÓN DE FLOR
-===================================== */
-
-const flores =
-    document.querySelectorAll(
-        ".flor-opcion"
-    );
+}
 
 
-let florElegida = "";
+.flor-opcion {
 
+    width:
+        95px;
 
-flores.forEach(
-    flor => {
+    height:
+        95px;
 
-        flor.addEventListener(
-            "click",
-            () => {
+    border-radius:
+        50%;
 
-                flores.forEach(
-                    item => {
+    background:
+        white;
 
-                        item.classList
-                            .remove(
-                                "seleccionada"
-                            );
+    font-size:
+        3.5rem;
 
-                    }
-                );
-
-
-                flor.classList
-                    .add(
-                        "seleccionada"
-                    );
-
-
-                florElegida =
-                    flor.dataset.flor;
-
-
-                mostrarRespuestaFlor(
-                    florElegida
-                );
-
-
-                document
-                    .getElementById(
-                        "btnDespuesFlor"
-                    )
-                    .classList
-                    .add(
-                        "mostrar"
-                    );
-
-            }
+    box-shadow:
+        0 10px 30px
+        rgba(
+            100,
+            60,
+            80,
+            0.10
         );
 
-    }
-);
+    transition:
+        0.3s;
+
+}
 
 
+.flor-opcion:hover {
 
-function mostrarRespuestaFlor(
-    flor
-) {
+    transform:
+        translateY(-8px)
+        rotate(5deg);
 
-    const respuesta =
-        document.getElementById(
-            "respuestaFlor"
+}
+
+
+.flor-opcion.seleccionada {
+
+    transform:
+        scale(1.15);
+
+    box-shadow:
+        0 0 0 4px
+        #f1b4c1,
+        0 15px 35px
+        rgba(
+            100,
+            60,
+            80,
+            0.15
         );
-
-
-    const respuestas = {
-
-        amarilla:
-            "Elegiste la protagonista de todo esto. 🌻",
-
-        blanca:
-            "Elegante elección. Aunque hoy la protagonista sigue siendo amarilla. 🤍",
-
-        rosa:
-            "Sabía que el rosa iba a aparecer en algún momento. 🌷"
-
-    };
-
-
-    respuesta.textContent =
-        respuestas[flor];
 
 }
 
 
 
 /* =====================================
-   IR AL MENSAJE
+   MENSAJE
 ===================================== */
 
-document
-    .getElementById(
-        "btnDespuesFlor"
-    )
-    .addEventListener(
-        "click",
-        () => {
+.flor-grande {
 
-            cambiarPantalla(
-                "mensaje"
-            );
+    font-size:
+        75px;
 
-
-            setTimeout(
-                escribirMensaje,
-                700
-            );
-
-        }
-    );
-
-
-
-/* =====================================
-   MENSAJE PERSONAL
-===================================== */
-
-function escribirMensaje() {
-
-    const elemento =
-        document.getElementById(
-            "mensajeEscritura"
-        );
-
-
-    /*
-       AQUÍ PUEDES PERSONALIZAR
-       EL MENSAJE MÁS ADELANTE.
-    */
-
-    const texto = `Camila...
-
-No quería simplemente darte una flor amarilla.
-
-Quería hacer algo diferente.
-
-Algo que tuviera un poquito de mí
-y que, al mismo tiempo,
-tuviera cosas que me recuerdan a ti.
-
-Así que hice esto.
-
-No porque fuera necesario.
-
-Sino porque hay personas
-que hacen que uno quiera tener
-detalles bonitos con ellas.
-
-Y tú eres una de esas personas.
-
-Espero que sonrías un poquito
-cuando llegues hasta aquí.
-
-Feliz día de las Flores Amarillas. 🌻`;
-
-
-    let posicion = 0;
-
-
-    function escribir() {
-
-        if (
-            posicion <
-            texto.length
-        ) {
-
-            elemento.textContent +=
-                texto.charAt(posicion);
-
-
-            posicion++;
-
-
-            setTimeout(
-                escribir,
-                30
-            );
-
-        } else {
-
-            setTimeout(() => {
-
-                document
-                    .getElementById(
-                        "btnSecreto"
-                    )
-                    .classList
-                    .add(
-                        "mostrar"
-                    );
-
-            }, 1200);
-
-        }
-
-    }
-
-
-    escribir();
+    animation:
+        flotar 3s
+        infinite
+        ease-in-out;
 
 }
 
 
+.carta {
 
-/* =====================================
-   EASTER EGG
-===================================== */
+    max-width:
+        600px;
 
-document
-    .getElementById(
-        "btnSecreto"
-    )
-    .addEventListener(
-        "click",
-        () => {
+    margin:
+        25px auto;
 
-            cambiarPantalla(
-                "terminal"
-            );
+    min-height:
+        190px;
 
+    color:
+        #66545c;
 
-            iniciarTerminal();
+    line-height:
+        2;
 
-        }
-    );
+    font-size:
+        1.15rem;
+
+    white-space:
+        pre-line;
+
+}
 
 
 
@@ -660,144 +941,131 @@ document
    TERMINAL
 ===================================== */
 
-function iniciarTerminal() {
+.terminal {
 
-    const terminal =
-        document.getElementById(
-            "terminalTexto"
+    width:
+        100%;
+
+    max-width:
+        650px;
+
+    overflow:
+        hidden;
+
+    border-radius:
+        15px;
+
+    background:
+        #151318;
+
+    box-shadow:
+        0 30px 80px
+        rgba(
+            0,
+            0,
+            0,
+            0.3
         );
 
+}
 
-    terminal.textContent = "";
 
+.terminal-top {
 
-    const lineas = [
+    height:
+        42px;
 
-        "> iniciando proyecto...",
+    display:
+        flex;
 
+    align-items:
+        center;
 
-        "> cargando camila.js...",
+    padding:
+        0 15px;
 
+    background:
+        #252229;
 
-        "",
+}
 
 
-        "> leyendo información...",
+.botones-terminal {
 
+    display:
+        flex;
 
-        "",
+    gap:
+        7px;
 
+}
 
-        "Nombre: Camila",
 
+.botones-terminal span {
 
-        "Color principal: Rojo ❤️",
+    width:
+        12px;
 
+    height:
+        12px;
 
-        "Color secundario: Rosa claro 🌸",
+    border-radius:
+        50%;
 
+    background:
+        #777;
 
-        "Actividad favorita: Comer 🍔",
+}
 
 
-        "",
+.terminal-titulo {
 
+    color:
+        #999;
 
-        "> ejecutando análisis...",
+    font-size:
+        0.75rem;
 
+    margin-left:
+        15px;
 
-        "",
+    font-family:
+        monospace;
 
+}
 
-        "> Buscando razón del detalle...",
 
+#terminalTexto {
 
-        "",
+    padding:
+        25px;
 
+    min-height:
+        380px;
 
-        "ERROR 404:",
+    color:
+        #a9f7ae;
 
+    font-family:
+        Consolas,
+        monospace;
 
-        "Razón no encontrada.",
+    font-size:
+        0.9rem;
 
+    line-height:
+        1.8;
 
-        "",
+    white-space:
+        pre-wrap;
 
+}
 
-        "> intentando nuevamente...",
 
+#btnFinal {
 
-        "",
-
-
-        "ERROR:",
-
-
-        "Demasiadas razones.",
-
-
-        "",
-
-
-        "> conclusión:",
-
-
-        "Era imposible no hacerle algo.",
-
-
-        "",
-
-
-        "> compilación completada ✓"
-
-    ];
-
-
-    let linea =
-        0;
-
-
-    function escribirLinea() {
-
-        if (
-            linea <
-            lineas.length
-        ) {
-
-            terminal.textContent +=
-                lineas[linea]
-                + "\n";
-
-
-            linea++;
-
-
-            setTimeout(
-                escribirLinea,
-                250
-            );
-
-        } else {
-
-            setTimeout(() => {
-
-                document
-                    .getElementById(
-                        "btnFinal"
-                    )
-                    .classList
-                    .add(
-                        "mostrar"
-                    );
-
-            }, 1000);
-
-        }
-
-    }
-
-
-    escribirLinea();
+    margin:
+        0 25px 25px;
 
 }
 
@@ -807,65 +1075,270 @@ function iniciarTerminal() {
    FINAL
 ===================================== */
 
-document
-    .getElementById(
-        "btnFinal"
-    )
-    .addEventListener(
-        "click",
-        () => {
+.final {
 
-            cambiarPantalla(
-                "final"
-            );
+    animation:
+        aparecerFinal
+        1.5s
+        ease;
+
+}
 
 
-            explosionFlores();
+.flores-final {
+
+    font-size:
+        2.2rem;
+
+    letter-spacing:
+        10px;
+
+    margin-bottom:
+        25px;
+
+}
 
 
-            personalizarFinal();
+.final h1 {
 
-        }
-    );
+    max-width:
+        700px;
+
+    margin:
+        auto;
+
+}
+
+
+.final p {
+
+    max-width:
+        520px;
+
+    margin:
+        25px auto;
+
+    line-height:
+        1.8;
+
+    color:
+        #765f68;
+
+    font-size:
+        1.15rem;
+
+}
+
+
+.firma {
+
+    margin-top:
+        35px;
+
+    color:
+        #c43a56;
+
+    font-weight:
+        600;
+
+}
+
+
+.easter-egg {
+
+    margin-top:
+        50px;
+
+    opacity:
+        0.18;
+
+    font-size:
+        0.5rem;
+
+    font-family:
+        monospace;
+
+}
 
 
 
 /* =====================================
-   FINAL DINÁMICO
+   OCULTO / MOSTRAR
 ===================================== */
 
-function personalizarFinal() {
+.oculto {
 
-    const mensaje =
-        document.getElementById(
-            "mensajeFinal"
-        );
+    opacity:
+        0;
+
+    pointer-events:
+        none;
+
+    transform:
+        translateY(12px);
+
+}
 
 
-    if (
-        comidaElegida ===
-        "postre"
-    ) {
+.mostrar {
 
-        mensaje.textContent =
-            "Y espero que después de todo esto, también encuentres algo rico para comer. 🍰💛";
+    opacity:
+        1;
+
+    pointer-events:
+        auto;
+
+    transform:
+        translateY(0);
+
+    transition:
+        0.8s;
+
+}
+
+
+
+/* =====================================
+   PÉTALOS
+===================================== */
+
+.petalito {
+
+    position:
+        fixed;
+
+    top:
+        -30px;
+
+    pointer-events:
+        none;
+
+    z-index:
+        100;
+
+    animation:
+        caer linear forwards;
+
+}
+
+
+
+/* =====================================
+   ANIMACIONES
+===================================== */
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform:
+            translateY(0);
+    }
+
+    50% {
+        transform:
+            translateY(-10px);
+    }
+
+}
+
+
+@keyframes crecerTallo {
+
+    from {
+        height:
+            0;
+    }
+
+    to {
+        height:
+            280px;
+    }
+
+}
+
+
+@keyframes aparecerHoja {
+
+    from {
+        opacity:
+            0;
+
+        transform:
+            scale(0);
+    }
+
+    to {
+        opacity:
+            1;
+    }
+
+}
+
+
+@keyframes crecerFlor {
+
+    from {
+        transform:
+            translateX(-50%)
+            scale(0);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+
+}
+
+
+@keyframes caer {
+
+    from {
+
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity:
+            1;
 
     }
 
-    else if (
-        comidaElegida ===
-        "hamburguesa"
-    ) {
+    to {
 
-        mensaje.textContent =
-            "Ahora solo falta cumplir una de las cosas importantes: conseguir algo rico para comer. 🍔💛";
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity:
+            0;
 
     }
 
-    else {
+}
 
-        mensaje.textContent =
-            "Espero que hoy recibas aunque sea una pequeña parte de todo lo bonito que mereces. 💛";
+
+@keyframes aparecerFinal {
+
+    from {
+
+        opacity:
+            0;
+
+        transform:
+            scale(0.8);
+
+    }
+
+    to {
+
+        opacity:
+            1;
+
+        transform:
+            scale(1);
 
     }
 
@@ -874,73 +1347,86 @@ function personalizarFinal() {
 
 
 /* =====================================
-   EXPLOSIÓN DE FLORES
+   CELULAR
 ===================================== */
 
-function explosionFlores() {
+@media (max-width: 600px) {
 
-    const elementos = [
-        "🌻",
-        "🌼",
-        "🌻",
-        "💛",
-        "✨"
-    ];
+    .tarjeta {
 
+        width:
+            100px;
 
-    for (
-        let i = 0;
-        i < 40;
-        i++
-    ) {
+        height:
+            155px;
 
-        const elemento =
-            document.createElement(
-                "div"
-            );
+    }
 
 
-        elemento.className =
-            "petalito";
+    .frente {
+
+        font-size:
+            2.2rem;
+
+    }
 
 
-        elemento.textContent =
-            elementos[
-                Math.floor(
-                    Math.random()
-                    * elementos.length
-                )
-            ];
+    .atras {
+
+        padding:
+            10px;
+
+    }
 
 
-        elemento.style.left =
-            Math.random()
-            * 100 + "vw";
+    .atras h3 {
+
+        font-size:
+            0.95rem;
+
+    }
 
 
-        elemento.style.fontSize =
-            15 +
-            Math.random() * 20
-            + "px";
+    .atras p {
+
+        font-size:
+            0.68rem;
+
+    }
 
 
-        elemento.style.animationDuration =
-            4 +
-            Math.random() * 5
-            + "s";
+    .carta {
+
+        font-size:
+            1rem;
+
+        line-height:
+            1.8;
+
+    }
 
 
-        document.body
-            .appendChild(
-                elemento
-            );
+    #terminalTexto {
+
+        font-size:
+            0.75rem;
+
+        min-height:
+            350px;
+
+    }
 
 
-        setTimeout(() => {
+    .flor-opcion {
 
-            elemento.remove();
+        width:
+            75px;
 
-        }, 10000);
+        height:
+            75px;
+
+        font-size:
+            2.7rem;
 
     }
 
