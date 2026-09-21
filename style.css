@@ -1,0 +1,731 @@
+/* =========================
+   CONFIGURACIÓN GENERAL
+========================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fff7fb;
+    color: #4a3a40;
+    overflow: hidden;
+}
+
+
+/* =========================
+   PANTALLAS
+========================= */
+
+.pantalla {
+    position: fixed;
+
+    width: 100%;
+    height: 100vh;
+
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    padding: 25px;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform: scale(1.03);
+
+    transition:
+        opacity 0.8s ease,
+        transform 0.8s ease,
+        visibility 0.8s;
+
+    background:
+        radial-gradient(
+            circle at center,
+            #fffafd 0%,
+            #ffeef7 100%
+        );
+}
+
+.pantalla.activa {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1);
+}
+
+
+.contenido {
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+
+/* =========================
+   INICIO
+========================= */
+
+.flor-pequena {
+    font-size: 70px;
+
+    animation:
+        flotar 3s ease-in-out infinite;
+}
+
+h1 {
+    font-size: clamp(2rem, 8vw, 4rem);
+
+    margin: 20px 0 10px;
+
+    color: #c7354f;
+
+    font-weight: 700;
+}
+
+.subtitulo {
+    font-size: 1.1rem;
+
+    color: #806a73;
+
+    margin-bottom: 35px;
+}
+
+
+/* =========================
+   BOTONES
+========================= */
+
+button {
+    border: none;
+
+    background: #d9405c;
+
+    color: white;
+
+    padding: 15px 28px;
+
+    border-radius: 30px;
+
+    font-size: 1rem;
+
+    cursor: pointer;
+
+    box-shadow:
+        0 8px 25px rgba(217, 64, 92, 0.25);
+
+    transition:
+        transform 0.3s,
+        box-shadow 0.3s,
+        background 0.3s;
+}
+
+button:hover {
+    transform: translateY(-3px);
+
+    background: #c52f4b;
+
+    box-shadow:
+        0 12px 30px rgba(217, 64, 92, 0.35);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+
+/* =========================
+   TEXTO
+========================= */
+
+.texto-suave {
+    font-size: 1.3rem;
+
+    color: #765f68;
+
+    margin-bottom: 20px;
+}
+
+.mensaje {
+    font-size: 1.3rem;
+
+    margin-top: 25px;
+
+    color: #b42f49;
+
+    font-weight: 500;
+}
+
+
+/* =========================
+   PLANTA
+========================= */
+
+#planta {
+    position: relative;
+
+    width: 220px;
+    height: 350px;
+
+    margin: auto;
+}
+
+
+/* tallo */
+
+.tallo {
+    position: absolute;
+
+    width: 7px;
+    height: 0;
+
+    background: #6e9b55;
+
+    bottom: 20px;
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    border-radius: 10px;
+
+    animation: crecerTallo 2s ease forwards;
+}
+
+
+/* hojas */
+
+.hoja {
+    position: absolute;
+
+    width: 75px;
+    height: 35px;
+
+    background: #82ae62;
+
+    opacity: 0;
+
+    border-radius: 100% 0 100% 0;
+}
+
+.hoja-izquierda {
+    left: 42px;
+    bottom: 110px;
+
+    transform: rotate(-25deg);
+
+    animation: aparecerHoja 1s 1.5s forwards;
+}
+
+.hoja-derecha {
+    right: 42px;
+    bottom: 160px;
+
+    transform: rotate(205deg);
+
+    animation: aparecerHoja 1s 1.8s forwards;
+}
+
+
+/* =========================
+   FLOR
+========================= */
+
+.flor-creciendo {
+    position: absolute;
+
+    top: 20px;
+    left: 50%;
+
+    width: 130px;
+    height: 130px;
+
+    transform:
+        translateX(-50%)
+        scale(0);
+
+    animation:
+        crecerFlor 1.5s 2.3s forwards;
+}
+
+.petalo {
+    position: absolute;
+
+    width: 65px;
+    height: 65px;
+
+    background: #ffd52f;
+
+    border-radius: 50% 50% 45% 45%;
+
+    left: 32px;
+    top: 32px;
+
+    transform-origin: center;
+}
+
+.p1 {
+    transform: translateY(-35px);
+}
+
+.p2 {
+    transform: rotate(60deg) translateY(-35px);
+}
+
+.p3 {
+    transform: rotate(120deg) translateY(-35px);
+}
+
+.p4 {
+    transform: rotate(180deg) translateY(-35px);
+}
+
+.p5 {
+    transform: rotate(240deg) translateY(-35px);
+}
+
+.p6 {
+    transform: rotate(300deg) translateY(-35px);
+}
+
+.centro-flor {
+    position: absolute;
+
+    width: 50px;
+    height: 50px;
+
+    background: #8c541e;
+
+    border-radius: 50%;
+
+    left: 40px;
+    top: 40px;
+
+    z-index: 5;
+
+    box-shadow:
+        inset 0 0 0 7px #9e6123;
+}
+
+
+/* =========================
+   TARJETAS
+========================= */
+
+h2 {
+    font-size: clamp(1.8rem, 6vw, 2.8rem);
+
+    color: #b62f49;
+
+    margin-bottom: 10px;
+}
+
+.instruccion {
+    color: #927a83;
+
+    margin-bottom: 30px;
+}
+
+.tarjetas {
+    display: flex;
+
+    justify-content: center;
+
+    gap: 15px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 30px;
+}
+
+.tarjeta {
+    width: 150px;
+    height: 190px;
+
+    perspective: 1000px;
+
+    cursor: pointer;
+}
+
+.frente,
+.atras {
+    width: 100%;
+    height: 100%;
+
+    border-radius: 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+    backface-visibility: hidden;
+
+    position: absolute;
+
+    transition: transform 0.7s;
+
+    box-shadow:
+        0 10px 30px rgba(150, 80, 100, 0.12);
+}
+
+.frente {
+    background: white;
+
+    font-size: 3rem;
+}
+
+.atras {
+    background: #fff;
+
+    transform: rotateY(180deg);
+
+    color: #5d4b52;
+}
+
+.tarjeta.volteada .frente {
+    transform: rotateY(180deg);
+}
+
+.tarjeta.volteada .atras {
+    transform: rotateY(360deg);
+}
+
+.atras h3 {
+    color: #d13b57;
+
+    margin-bottom: 10px;
+}
+
+.atras p {
+    font-size: 0.85rem;
+
+    line-height: 1.4;
+}
+
+
+/* =========================
+   MENSAJE
+========================= */
+
+.flor-grande {
+    font-size: 80px;
+
+    margin-bottom: 30px;
+
+    animation:
+        flotar 3s ease-in-out infinite;
+}
+
+.carta {
+    min-height: 180px;
+
+    font-size: 1.25rem;
+
+    line-height: 2;
+
+    color: #67545c;
+
+    padding: 0 10px;
+}
+
+
+/* =========================
+   TERMINAL
+========================= */
+
+.terminal {
+    width: 100%;
+    max-width: 650px;
+
+    background: #17151a;
+
+    border-radius: 15px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 25px 70px rgba(0, 0, 0, 0.25);
+
+    text-align: left;
+}
+
+.terminal-top {
+    height: 40px;
+
+    background: #252229;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding-left: 15px;
+}
+
+.terminal-top span {
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+
+    background: #777;
+}
+
+#terminalTexto {
+    min-height: 350px;
+
+    padding: 25px;
+
+    color: #b8ffbd;
+
+    font-family: Consolas, monospace;
+
+    font-size: 0.95rem;
+
+    line-height: 1.8;
+
+    white-space: pre-wrap;
+}
+
+#btnFinal {
+    margin: 0 25px 25px;
+}
+
+
+/* =========================
+   FINAL
+========================= */
+
+.final-contenido {
+    animation:
+        aparecerFinal 1.5s ease;
+}
+
+.final-contenido h1 {
+    font-size: clamp(2rem, 8vw, 3.5rem);
+}
+
+.final-contenido p {
+    font-size: 1.2rem;
+
+    color: #735f67;
+
+    line-height: 1.7;
+
+    margin: 20px auto;
+
+    max-width: 500px;
+}
+
+.lluvia-flores {
+    font-size: 2rem;
+
+    letter-spacing: 10px;
+
+    animation:
+        flotar 3s ease-in-out infinite;
+}
+
+.firma {
+    margin-top: 35px;
+
+    color: #c13a54;
+
+    font-weight: 600;
+}
+
+
+/* =========================
+   CLASES
+========================= */
+
+.oculto {
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform: translateY(10px);
+
+    transition:
+        opacity 0.8s,
+        transform 0.8s;
+}
+
+.mostrar {
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform: translateY(0);
+}
+
+
+/* =========================
+   PÉTALOS
+========================= */
+
+.petalito {
+    position: fixed;
+
+    top: -30px;
+
+    font-size: 20px;
+
+    pointer-events: none;
+
+    animation:
+        caer linear forwards;
+}
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+
+@keyframes crecerTallo {
+
+    from {
+        height: 0;
+    }
+
+    to {
+        height: 280px;
+    }
+}
+
+
+@keyframes aparecerHoja {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0);
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+
+@keyframes crecerFlor {
+
+    from {
+        transform:
+            translateX(-50%)
+            scale(0);
+    }
+
+    to {
+        transform:
+            translateX(-50%)
+            scale(1);
+    }
+}
+
+
+@keyframes caer {
+
+    from {
+        transform:
+            translateY(0)
+            rotate(0deg);
+
+        opacity: 1;
+    }
+
+    to {
+        transform:
+            translateY(110vh)
+            rotate(360deg);
+
+        opacity: 0;
+    }
+}
+
+
+@keyframes aparecerFinal {
+
+    from {
+        opacity: 0;
+
+        transform: scale(0.8);
+    }
+
+    to {
+        opacity: 1;
+
+        transform: scale(1);
+    }
+}
+
+
+/* =========================
+   CELULAR
+========================= */
+
+@media (max-width: 600px) {
+
+    .tarjeta {
+        width: 100px;
+        height: 150px;
+    }
+
+    .frente {
+        font-size: 2.2rem;
+    }
+
+    .atras {
+        padding: 10px;
+    }
+
+    .atras h3 {
+        font-size: 1rem;
+    }
+
+    .atras p {
+        font-size: 0.7rem;
+    }
+
+    .carta {
+        font-size: 1.05rem;
+        line-height: 1.8;
+    }
+
+    #terminalTexto {
+        font-size: 0.78rem;
+
+        min-height: 300px;
+
+        padding: 20px;
+    }
+
+}
