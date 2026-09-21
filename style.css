@@ -18,10 +18,10 @@ body {
 
 body {
 
-    font-family:
-        "Segoe UI",
-        Arial,
-        sans-serif;
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #fff7fa;
+    color: #55464c;
+    overflow: hidden;
 
     background:
         #fff7fa;
@@ -1458,6 +1458,45 @@ h2 {
 
 
 /* Barra de desplazamiento */
+
+#mensaje::-webkit-scrollbar {
+    width: 6px;
+}
+
+#mensaje::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+#mensaje::-webkit-scrollbar-thumb {
+    background: #e7a8b7;
+    border-radius: 10px;
+}
+
+/* ==============================
+   SCROLL DEL MENSAJE
+============================== */
+
+#mensaje {
+    overflow-y: auto;
+    overflow-x: hidden;
+    align-items: flex-start;
+    justify-content: center;
+    -webkit-overflow-scrolling: touch;
+}
+
+#mensaje .contenido {
+    width: 100%;
+    min-height: 100%;
+    padding-top: 70px;
+    padding-bottom: 120px;
+}
+
+#mensajeEscritura {
+    width: 100%;
+    max-width: 650px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
 
 #mensaje::-webkit-scrollbar {
     width: 6px;

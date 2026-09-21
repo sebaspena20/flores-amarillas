@@ -548,15 +548,13 @@ document
 function escribirMensaje() {
 
     const elemento =
-        document.getElementById(
-            "mensajeEscritura"
-        );
+        document.getElementById("mensajeEscritura");
 
+    const mensajeSeccion =
+        document.getElementById("mensaje");
 
-    /*
-       AQUÍ PUEDES PERSONALIZAR
-       EL MENSAJE MÁS ADELANTE.
-    */
+    const btnSecreto =
+        document.getElementById("btnSecreto");
 
     const texto = `Camila...
 
@@ -583,43 +581,34 @@ cuando llegues hasta aquí.
 
 Feliz día de las Flores Amarillas. 🌻`;
 
+    elemento.textContent = "";
 
     let posicion = 0;
 
+    function escribir() {
 
-function escribir() {
+        if (posicion < texto.length) {
 
-    if (
-        posicion <
-        texto.length
-    ) {
+            elemento.textContent +=
+                texto.charAt(posicion);
 
-        elemento.textContent +=
-            texto.charAt(posicion);
+            posicion++;
 
-        posicion++;
+            setTimeout(escribir, 30);
 
+        } else {
 
-        /* Desplazar suavemente hacia abajo */
+            // El botón aparece después de terminar el mensaje
+            setTimeout(() => {
 
-        elemento.parentElement.scrollTo({
+                btnSecreto.classList.add("mostrar");
 
-            top:
-                elemento.parentElement.scrollHeight,
+            }, 800);
+        }
+    }
 
-            behavior:
-                "smooth"
-
-        });
-
-
-        setTimeout(
-            escribir,
-            30
-        );
-
-    } else {
-
+    escribir();
+}
 
 
 /* =====================================
