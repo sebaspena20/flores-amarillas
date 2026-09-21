@@ -379,7 +379,7 @@ function mostrarRespuestaComida(
         pizza:
             "Sabía que había algo importante que descubrir aquí. 🍕",
 
-        bandera:
+        hamburguesa:
             "Una elección bastante seria. 😂🍗",
 
         sushi:
