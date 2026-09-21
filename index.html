@@ -1,250 +1,586 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Para Camila 🌻</title>
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
-    <link rel="stylesheet" href="style.css">
+    <title>Una pequeña sorpresa 🌻</title>
+
+    <link
+        rel="stylesheet"
+        href="style.css"
+    >
+
 </head>
+
 
 <body>
 
-    <!-- FONDO DE PÉTALOS -->
-    <div id="petals"></div>
 
-    <!-- =========================
-         PANTALLA 1
-    ========================== -->
+<!-- =====================================
+     EFECTOS
+===================================== -->
 
-    <section id="inicio" class="pantalla activa">
+<div id="petals"></div>
 
-        <div class="contenido">
 
-            <div class="flor-pequena">🌻</div>
+<!-- =====================================
+     PANTALLA 1
+===================================== -->
 
-            <h1>Para Camila</h1>
+<section
+    id="inicio"
+    class="pantalla activa"
+>
 
-            <p class="subtitulo">
-                Tengo un pequeño detalle para ti...
-            </p>
+    <div class="contenido inicio">
 
-            <button id="btnComenzar">
-                Descubrir 🌷
-            </button>
+        <div class="flor-icono">
+            🌻
+        </div>
+
+        <p class="pequeno">
+            Tengo algo que enseñarte...
+        </p>
+
+        <h1>
+            Para Camila
+        </h1>
+
+        <p class="subtitulo">
+            No es mucho.<br>
+            Pero lo hice especialmente para ti.
+        </p>
+
+        <button id="btnComenzar">
+            Abrir sorpresa
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     PANTALLA 2
+     SEMILLA
+===================================== -->
+
+<section
+    id="semilla"
+    class="pantalla"
+>
+
+    <div class="contenido">
+
+        <p class="texto-suave">
+            Algunas cosas bonitas comienzan siendo pequeñas...
+        </p>
+
+
+        <div id="planta">
+
+            <div class="tallo"></div>
+
+            <div class="hoja hoja-izquierda"></div>
+
+            <div class="hoja hoja-derecha"></div>
+
+
+            <div class="flor-creciendo">
+
+                <div class="petalo p1"></div>
+                <div class="petalo p2"></div>
+                <div class="petalo p3"></div>
+                <div class="petalo p4"></div>
+                <div class="petalo p5"></div>
+                <div class="petalo p6"></div>
+
+                <div class="centro-flor"></div>
+
+            </div>
 
         </div>
 
-    </section>
+
+        <p
+            id="textoFlor"
+            class="mensaje oculto"
+        >
+            Así que decidí cultivar algo para ti.
+        </p>
 
 
-    <!-- =========================
-         PANTALLA 2
-    ========================== -->
+        <button
+            id="btnFlor"
+            class="oculto"
+        >
+            Continuar →
+        </button>
 
-    <section id="semilla" class="pantalla">
+    </div>
 
-        <div class="contenido">
+</section>
 
-            <p class="texto-suave">
-                No sabía muy bien qué regalarte hoy...
-            </p>
 
-            <div id="planta">
 
-                <div class="tallo"></div>
+<!-- =====================================
+     PANTALLA 3
+     COSAS SOBRE CAMILA
+===================================== -->
 
-                <div class="hoja hoja-izquierda"></div>
-                <div class="hoja hoja-derecha"></div>
+<section
+    id="caracteristicas"
+    class="pantalla"
+>
 
-                <div class="flor-creciendo">
+    <div class="contenido">
 
-                    <div class="petalo p1"></div>
-                    <div class="petalo p2"></div>
-                    <div class="petalo p3"></div>
-                    <div class="petalo p4"></div>
-                    <div class="petalo p5"></div>
-                    <div class="petalo p6"></div>
-                    <div class="centro-flor"></div>
+        <span class="numero">
+            01 / 04
+        </span>
+
+        <h2>
+            Cosas que sé de ti
+        </h2>
+
+        <p class="instruccion">
+            Toca cada una.
+        </p>
+
+
+        <div class="tarjetas">
+
+
+            <!-- ROJO -->
+
+            <div
+                class="tarjeta"
+                data-tipo="rojo"
+            >
+
+                <div class="frente">
+                    ❤️
+                    <small>
+                        Color
+                    </small>
+                </div>
+
+                <div class="atras">
+
+                    <h3>
+                        Rojo
+                    </h3>
+
+                    <p>
+                        Porque aparentemente
+                        hay colores que
+                        simplemente tienen
+                        tu nombre.
+                    </p>
 
                 </div>
 
             </div>
 
-            <p id="textoFlor" class="mensaje oculto">
-                Así que decidí cultivar algo...
-            </p>
-
-            <button id="btnFlor" class="oculto">
-                Continuar →
-            </button>
-
-        </div>
-
-    </section>
 
 
-    <!-- =========================
-         PANTALLA 3
-    ========================== -->
+            <!-- ROSA -->
 
-    <section id="caracteristicas" class="pantalla">
+            <div
+                class="tarjeta"
+                data-tipo="rosa"
+            >
 
-        <div class="contenido">
-
-            <h2>Hay algunas cosas que sé de ti...</h2>
-
-            <p class="instruccion">
-                Toca cada tarjeta.
-            </p>
-
-            <div class="tarjetas">
-
-                <div class="tarjeta" data-tipo="rojo">
-
-                    <div class="frente">
-                        ❤️
-                    </div>
-
-                    <div class="atras">
-                        <h3>Rojo</h3>
-
-                        <p>
-                            Porque aparentemente hay colores
-                            que simplemente tienen tu nombre.
-                        </p>
-                    </div>
-
+                <div class="frente">
+                    🌸
+                    <small>
+                        También
+                    </small>
                 </div>
 
+                <div class="atras">
 
-                <div class="tarjeta" data-tipo="rosa">
+                    <h3>
+                        Rosa claro
+                    </h3>
 
-                    <div class="frente">
-                        🌸
-                    </div>
-
-                    <div class="atras">
-
-                        <h3>Rosa claro</h3>
-
-                        <p>
-                            Porque también tienes tu lado
-                            delicado... aunque no siempre quieras admitirlo.
-                        </p>
-
-                    </div>
-
-                </div>
-
-
-                <div class="tarjeta" data-tipo="comida">
-
-                    <div class="frente">
-                        🍔
-                    </div>
-
-                    <div class="atras">
-
-                        <h3>Comer</h3>
-
-                        <p>
-                            Este probablemente era demasiado obvio. 😂
-                        </p>
-
-                    </div>
+                    <p>
+                        Porque también tienes
+                        tu lado delicado...
+                        aunque probablemente
+                        no lo admitirías.
+                    </p>
 
                 </div>
 
             </div>
 
-            <button id="btnCaracteristicas" class="oculto">
-                Hay algo más...
+
+
+            <!-- COMIDA -->
+
+            <div
+                class="tarjeta"
+                data-tipo="comida"
+            >
+
+                <div class="frente">
+                    🍔
+                    <small>
+                        Importante
+                    </small>
+                </div>
+
+                <div class="atras">
+
+                    <h3>
+                        Comer
+                    </h3>
+
+                    <p>
+                        Esta información
+                        era demasiado importante
+                        como para olvidarla. 😂
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <button
+            id="btnCaracteristicas"
+            class="oculto"
+        >
+            Creo que falta algo...
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     PANTALLA 4
+     JUEGO
+===================================== -->
+
+<section
+    id="juego"
+    class="pantalla"
+>
+
+    <div class="contenido">
+
+        <span class="numero">
+            02 / 04
+        </span>
+
+        <h2>
+            Una pregunta importante...
+        </h2>
+
+        <p class="pregunta">
+            Si ahora mismo pudieras elegir
+            cualquier cosa para comer...
+        </p>
+
+
+        <div class="opciones-comida">
+
+
+            <button
+                class="opcion-comida"
+                data-comida="pizza"
+            >
+                🍕
+                <span>
+                    Pizza
+                </span>
+            </button>
+
+
+            <button
+                class="opcion-comida"
+                data-comida="hamburguesa"
+            >
+                🍔
+                <span>
+                    Hamburguesa
+                </span>
+            </button>
+
+
+            <button
+                class="opcion-comida"
+                data-comida="sushi"
+            >
+                🍣
+                <span>
+                    Sushi
+                </span>
+            </button>
+
+
+            <button
+                class="opcion-comida"
+                data-comida="postre"
+            >
+                🍰
+                <span>
+                    Postre
+                </span>
             </button>
 
         </div>
 
-    </section>
+
+        <p
+            id="respuestaComida"
+            class="respuesta"
+        ></p>
 
 
-    <!-- =========================
-         PANTALLA 4
-    ========================== -->
+        <button
+            id="btnDespuesComida"
+            class="oculto"
+        >
+            Siguiente →
+        </button>
 
-    <section id="mensaje" class="pantalla">
+    </div>
 
-        <div class="contenido">
+</section>
 
-            <div class="flor-grande">
+
+
+<!-- =====================================
+     PANTALLA 5
+     ELECCIÓN DE FLOR
+===================================== -->
+
+<section
+    id="eleccionFlor"
+    class="pantalla"
+>
+
+    <div class="contenido">
+
+        <span class="numero">
+            03 / 04
+        </span>
+
+        <h2>
+            Ahora te toca elegir
+        </h2>
+
+        <p class="pregunta">
+            Escoge una flor.
+        </p>
+
+
+        <div class="flores-eleccion">
+
+
+            <button
+                class="flor-opcion"
+                data-flor="amarilla"
+            >
                 🌻
-            </div>
+            </button>
 
-            <p id="mensajeEscritura" class="carta"></p>
 
-            <button id="btnSecreto" class="oculto">
-                ¿Eso era todo? 👀
+            <button
+                class="flor-opcion"
+                data-flor="blanca"
+            >
+                🌼
+            </button>
+
+
+            <button
+                class="flor-opcion"
+                data-flor="rosa"
+            >
+                🌷
             </button>
 
         </div>
 
-    </section>
+
+        <p
+            id="respuestaFlor"
+            class="respuesta"
+        ></p>
 
 
-    <!-- =========================
-         PANTALLA 5
-    ========================== -->
+        <button
+            id="btnDespuesFlor"
+            class="oculto"
+        >
+            Continuar →
+        </button>
 
-    <section id="terminal" class="pantalla">
+    </div>
 
-        <div class="terminal">
+</section>
 
-            <div class="terminal-top">
+
+
+<!-- =====================================
+     PANTALLA 6
+     MENSAJE
+===================================== -->
+
+<section
+    id="mensaje"
+    class="pantalla"
+>
+
+    <div class="contenido mensaje-contenido">
+
+        <div class="flor-grande">
+            🌻
+        </div>
+
+        <span class="numero">
+            04 / 04
+        </span>
+
+
+        <p
+            id="mensajeEscritura"
+            class="carta"
+        ></p>
+
+
+        <button
+            id="btnSecreto"
+            class="oculto"
+        >
+            Espera... ¿eso era todo? 👀
+        </button>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================
+     PANTALLA 7
+     EASTER EGG
+===================================== -->
+
+<section
+    id="terminal"
+    class="pantalla"
+>
+
+    <div class="terminal">
+
+        <div class="terminal-top">
+
+            <div class="botones-terminal">
+
                 <span></span>
                 <span></span>
                 <span></span>
+
             </div>
 
-            <div id="terminalTexto"></div>
-
-            <button id="btnFinal" class="oculto">
-                Continuar
-            </button>
+            <span class="terminal-titulo">
+                camila.js
+            </span>
 
         </div>
 
-    </section>
+
+        <div
+            id="terminalTexto"
+        ></div>
 
 
-    <!-- =========================
-         PANTALLA FINAL
-    ========================== -->
+        <button
+            id="btnFinal"
+            class="oculto"
+        >
+            Ejecutar sorpresa
+        </button>
 
-    <section id="final" class="pantalla">
+    </div>
 
-        <div class="contenido final-contenido">
+</section>
 
-            <div class="lluvia-flores">
-                🌻 🌼 🌻 🌼 🌻
-            </div>
 
-            <h1>Feliz día de las Flores Amarillas, Camila 🌻</h1>
 
-            <p>
-                Espero que hoy alguien te recuerde
-                lo especial que eres.
-            </p>
+<!-- =====================================
+     FINAL
+===================================== -->
 
-            <div class="firma">
-                Hecho especialmente para ti 💛
-            </div>
+<section
+    id="final"
+    class="pantalla"
+>
+
+    <div class="contenido final">
+
+        <div class="flores-final">
+            🌻 🌼 🌻
+        </div>
+
+
+        <h1>
+            Feliz día de las
+            Flores Amarillas, Camila 🌻
+        </h1>
+
+
+        <p id="mensajeFinal">
+
+            Espero que hoy recibas
+            aunque sea una pequeña parte
+            de todo lo bonito que mereces.
+
+        </p>
+
+
+        <div class="firma">
+
+            Hecho con código,
+            tiempo y un poquito de cariño. 💛
 
         </div>
 
-    </section>
+
+        <div
+            id="easterEggFinal"
+            class="easter-egg"
+        >
+            <span>
+                01000011 01100001 01101101 01101001 01101100 01100001
+            </span>
+        </div>
+
+    </div>
+
+</section>
 
 
-    <script src="script.js"></script>
+
+<script src="script.js"></script>
 
 </body>
+
 </html>
