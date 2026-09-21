@@ -1,731 +1,947 @@
-/* =========================
-   CONFIGURACIÓN GENERAL
-========================= */
+/* =====================================
+   CAMBIO DE PANTALLA
+===================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
+function cambiarPantalla(id) {
 
-html {
-    scroll-behavior: smooth;
-}
+    document
+        .querySelectorAll(".pantalla")
+        .forEach(pantalla => {
 
-body {
-    font-family: "Segoe UI", Arial, sans-serif;
-    background: #fff7fb;
-    color: #4a3a40;
-    overflow: hidden;
-}
+            pantalla.classList.remove("activa");
+
+        });
 
 
-/* =========================
-   PANTALLAS
-========================= */
+    document
+        .getElementById(id)
+        .classList.add("activa");
 
-.pantalla {
-    position: fixed;
-
-    width: 100%;
-    height: 100vh;
-
-    top: 0;
-    left: 0;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    padding: 25px;
-
-    opacity: 0;
-    visibility: hidden;
-
-    transform: scale(1.03);
-
-    transition:
-        opacity 0.8s ease,
-        transform 0.8s ease,
-        visibility 0.8s;
-
-    background:
-        radial-gradient(
-            circle at center,
-            #fffafd 0%,
-            #ffeef7 100%
-        );
-}
-
-.pantalla.activa {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1);
 }
 
 
-.contenido {
-    width: 100%;
-    max-width: 700px;
-    text-align: center;
-}
 
-
-/* =========================
-   INICIO
-========================= */
-
-.flor-pequena {
-    font-size: 70px;
-
-    animation:
-        flotar 3s ease-in-out infinite;
-}
-
-h1 {
-    font-size: clamp(2rem, 8vw, 4rem);
-
-    margin: 20px 0 10px;
-
-    color: #c7354f;
-
-    font-weight: 700;
-}
-
-.subtitulo {
-    font-size: 1.1rem;
-
-    color: #806a73;
-
-    margin-bottom: 35px;
-}
-
-
-/* =========================
-   BOTONES
-========================= */
-
-button {
-    border: none;
-
-    background: #d9405c;
-
-    color: white;
-
-    padding: 15px 28px;
-
-    border-radius: 30px;
-
-    font-size: 1rem;
-
-    cursor: pointer;
-
-    box-shadow:
-        0 8px 25px rgba(217, 64, 92, 0.25);
-
-    transition:
-        transform 0.3s,
-        box-shadow 0.3s,
-        background 0.3s;
-}
-
-button:hover {
-    transform: translateY(-3px);
-
-    background: #c52f4b;
-
-    box-shadow:
-        0 12px 30px rgba(217, 64, 92, 0.35);
-}
-
-button:active {
-    transform: scale(0.95);
-}
-
-
-/* =========================
-   TEXTO
-========================= */
-
-.texto-suave {
-    font-size: 1.3rem;
-
-    color: #765f68;
-
-    margin-bottom: 20px;
-}
-
-.mensaje {
-    font-size: 1.3rem;
-
-    margin-top: 25px;
-
-    color: #b42f49;
-
-    font-weight: 500;
-}
-
-
-/* =========================
-   PLANTA
-========================= */
-
-#planta {
-    position: relative;
-
-    width: 220px;
-    height: 350px;
-
-    margin: auto;
-}
-
-
-/* tallo */
-
-.tallo {
-    position: absolute;
-
-    width: 7px;
-    height: 0;
-
-    background: #6e9b55;
-
-    bottom: 20px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    border-radius: 10px;
-
-    animation: crecerTallo 2s ease forwards;
-}
-
-
-/* hojas */
-
-.hoja {
-    position: absolute;
-
-    width: 75px;
-    height: 35px;
-
-    background: #82ae62;
-
-    opacity: 0;
-
-    border-radius: 100% 0 100% 0;
-}
-
-.hoja-izquierda {
-    left: 42px;
-    bottom: 110px;
-
-    transform: rotate(-25deg);
-
-    animation: aparecerHoja 1s 1.5s forwards;
-}
-
-.hoja-derecha {
-    right: 42px;
-    bottom: 160px;
-
-    transform: rotate(205deg);
-
-    animation: aparecerHoja 1s 1.8s forwards;
-}
-
-
-/* =========================
-   FLOR
-========================= */
-
-.flor-creciendo {
-    position: absolute;
-
-    top: 20px;
-    left: 50%;
-
-    width: 130px;
-    height: 130px;
-
-    transform:
-        translateX(-50%)
-        scale(0);
-
-    animation:
-        crecerFlor 1.5s 2.3s forwards;
-}
-
-.petalo {
-    position: absolute;
-
-    width: 65px;
-    height: 65px;
-
-    background: #ffd52f;
-
-    border-radius: 50% 50% 45% 45%;
-
-    left: 32px;
-    top: 32px;
-
-    transform-origin: center;
-}
-
-.p1 {
-    transform: translateY(-35px);
-}
-
-.p2 {
-    transform: rotate(60deg) translateY(-35px);
-}
-
-.p3 {
-    transform: rotate(120deg) translateY(-35px);
-}
-
-.p4 {
-    transform: rotate(180deg) translateY(-35px);
-}
-
-.p5 {
-    transform: rotate(240deg) translateY(-35px);
-}
-
-.p6 {
-    transform: rotate(300deg) translateY(-35px);
-}
-
-.centro-flor {
-    position: absolute;
-
-    width: 50px;
-    height: 50px;
-
-    background: #8c541e;
-
-    border-radius: 50%;
-
-    left: 40px;
-    top: 40px;
-
-    z-index: 5;
-
-    box-shadow:
-        inset 0 0 0 7px #9e6123;
-}
-
-
-/* =========================
-   TARJETAS
-========================= */
-
-h2 {
-    font-size: clamp(1.8rem, 6vw, 2.8rem);
-
-    color: #b62f49;
-
-    margin-bottom: 10px;
-}
-
-.instruccion {
-    color: #927a83;
-
-    margin-bottom: 30px;
-}
-
-.tarjetas {
-    display: flex;
-
-    justify-content: center;
-
-    gap: 15px;
-
-    flex-wrap: wrap;
-
-    margin-bottom: 30px;
-}
-
-.tarjeta {
-    width: 150px;
-    height: 190px;
-
-    perspective: 1000px;
-
-    cursor: pointer;
-}
-
-.frente,
-.atras {
-    width: 100%;
-    height: 100%;
-
-    border-radius: 20px;
-
-    display: flex;
-
-    flex-direction: column;
-
-    justify-content: center;
-
-    align-items: center;
-
-    padding: 20px;
-
-    backface-visibility: hidden;
-
-    position: absolute;
-
-    transition: transform 0.7s;
-
-    box-shadow:
-        0 10px 30px rgba(150, 80, 100, 0.12);
-}
-
-.frente {
-    background: white;
-
-    font-size: 3rem;
-}
-
-.atras {
-    background: #fff;
-
-    transform: rotateY(180deg);
-
-    color: #5d4b52;
-}
-
-.tarjeta.volteada .frente {
-    transform: rotateY(180deg);
-}
-
-.tarjeta.volteada .atras {
-    transform: rotateY(360deg);
-}
-
-.atras h3 {
-    color: #d13b57;
-
-    margin-bottom: 10px;
-}
-
-.atras p {
-    font-size: 0.85rem;
-
-    line-height: 1.4;
-}
-
-
-/* =========================
-   MENSAJE
-========================= */
-
-.flor-grande {
-    font-size: 80px;
-
-    margin-bottom: 30px;
-
-    animation:
-        flotar 3s ease-in-out infinite;
-}
-
-.carta {
-    min-height: 180px;
-
-    font-size: 1.25rem;
-
-    line-height: 2;
-
-    color: #67545c;
-
-    padding: 0 10px;
-}
-
-
-/* =========================
-   TERMINAL
-========================= */
-
-.terminal {
-    width: 100%;
-    max-width: 650px;
-
-    background: #17151a;
-
-    border-radius: 15px;
-
-    overflow: hidden;
-
-    box-shadow:
-        0 25px 70px rgba(0, 0, 0, 0.25);
-
-    text-align: left;
-}
-
-.terminal-top {
-    height: 40px;
-
-    background: #252229;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
-
-    padding-left: 15px;
-}
-
-.terminal-top span {
-    width: 12px;
-    height: 12px;
-
-    border-radius: 50%;
-
-    background: #777;
-}
-
-#terminalTexto {
-    min-height: 350px;
-
-    padding: 25px;
-
-    color: #b8ffbd;
-
-    font-family: Consolas, monospace;
-
-    font-size: 0.95rem;
-
-    line-height: 1.8;
-
-    white-space: pre-wrap;
-}
-
-#btnFinal {
-    margin: 0 25px 25px;
-}
-
-
-/* =========================
-   FINAL
-========================= */
-
-.final-contenido {
-    animation:
-        aparecerFinal 1.5s ease;
-}
-
-.final-contenido h1 {
-    font-size: clamp(2rem, 8vw, 3.5rem);
-}
-
-.final-contenido p {
-    font-size: 1.2rem;
-
-    color: #735f67;
-
-    line-height: 1.7;
-
-    margin: 20px auto;
-
-    max-width: 500px;
-}
-
-.lluvia-flores {
-    font-size: 2rem;
-
-    letter-spacing: 10px;
-
-    animation:
-        flotar 3s ease-in-out infinite;
-}
-
-.firma {
-    margin-top: 35px;
-
-    color: #c13a54;
-
-    font-weight: 600;
-}
-
-
-/* =========================
-   CLASES
-========================= */
-
-.oculto {
-    opacity: 0;
-
-    pointer-events: none;
-
-    transform: translateY(10px);
-
-    transition:
-        opacity 0.8s,
-        transform 0.8s;
-}
-
-.mostrar {
-    opacity: 1;
-
-    pointer-events: auto;
-
-    transform: translateY(0);
-}
-
-
-/* =========================
+/* =====================================
    PÉTALOS
-========================= */
+===================================== */
 
-.petalito {
-    position: fixed;
+function crearPetalo() {
 
-    top: -30px;
+    const petalo =
+        document.createElement("div");
 
-    font-size: 20px;
 
-    pointer-events: none;
+    petalo.className =
+        "petalito";
 
-    animation:
-        caer linear forwards;
+
+    petalo.textContent =
+        "🌼";
+
+
+    petalo.style.left =
+        Math.random() * 100 + "vw";
+
+
+    petalo.style.fontSize =
+        12 + Math.random() * 15 + "px";
+
+
+    petalo.style.animationDuration =
+        5 + Math.random() * 5 + "s";
+
+
+    document
+        .getElementById("petals")
+        .appendChild(petalo);
+
+
+    setTimeout(() => {
+
+        petalo.remove();
+
+    }, 10000);
+
 }
 
 
-/* =========================
-   ANIMACIONES
-========================= */
+setInterval(
+    crearPetalo,
+    1200
+);
 
-@keyframes flotar {
 
-    0%,
-    100% {
-        transform: translateY(0);
+
+/* =====================================
+   INICIO
+===================================== */
+
+document
+    .getElementById("btnComenzar")
+    .addEventListener(
+        "click",
+        () => {
+
+            cambiarPantalla(
+                "semilla"
+            );
+
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "textoFlor"
+                    )
+                    .classList
+                    .add("mostrar");
+
+            }, 3500);
+
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "btnFlor"
+                    )
+                    .classList
+                    .add("mostrar");
+
+            }, 4800);
+
+        }
+    );
+
+
+
+/* =====================================
+   FLOR
+===================================== */
+
+document
+    .getElementById("btnFlor")
+    .addEventListener(
+        "click",
+        () => {
+
+            cambiarPantalla(
+                "caracteristicas"
+            );
+
+        }
+    );
+
+
+
+/* =====================================
+   TARJETAS
+===================================== */
+
+const tarjetas =
+    document.querySelectorAll(
+        ".tarjeta"
+    );
+
+
+let tarjetasAbiertas = 0;
+
+
+tarjetas.forEach(
+    tarjeta => {
+
+        tarjeta.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    !tarjeta
+                        .classList
+                        .contains(
+                            "volteada"
+                        )
+                ) {
+
+                    tarjeta
+                        .classList
+                        .add(
+                            "volteada"
+                        );
+
+                    tarjetasAbiertas++;
+
+                }
+
+
+                if (
+                    tarjeta.dataset.tipo
+                    === "comida"
+                ) {
+
+                    lluviaComida();
+
+                }
+
+
+                if (
+                    tarjetasAbiertas === 3
+                ) {
+
+                    setTimeout(() => {
+
+                        document
+                            .getElementById(
+                                "btnCaracteristicas"
+                            )
+                            .classList
+                            .add(
+                                "mostrar"
+                            );
+
+                    }, 700);
+
+                }
+
+            }
+        );
+
+    }
+);
+
+
+
+/* =====================================
+   LLUVIA DE COMIDA
+===================================== */
+
+function lluviaComida() {
+
+    const comidas = [
+        "🍔",
+        "🍕",
+        "🍟",
+        "🍰",
+        "🍩",
+        "🍗",
+        "🍫"
+    ];
+
+
+    for (
+        let i = 0;
+        i < 15;
+        i++
+    ) {
+
+        const comida =
+            document.createElement(
+                "div"
+            );
+
+
+        comida.className =
+            "petalito";
+
+
+        comida.textContent =
+            comidas[
+                Math.floor(
+                    Math.random()
+                    * comidas.length
+                )
+            ];
+
+
+        comida.style.left =
+            Math.random()
+            * 100 + "vw";
+
+
+        comida.style.animationDuration =
+            3 + Math.random() * 3
+            + "s";
+
+
+        document.body
+            .appendChild(comida);
+
+
+        setTimeout(() => {
+
+            comida.remove();
+
+        }, 6000);
+
     }
 
-    50% {
-        transform: translateY(-10px);
-    }
 }
 
 
-@keyframes crecerTallo {
 
-    from {
-        height: 0;
-    }
+/* =====================================
+   IR AL JUEGO
+===================================== */
 
-    to {
-        height: 280px;
+document
+    .getElementById(
+        "btnCaracteristicas"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            cambiarPantalla(
+                "juego"
+            );
+
+        }
+    );
+
+
+
+/* =====================================
+   JUEGO DE COMIDA
+===================================== */
+
+const opcionesComida =
+    document.querySelectorAll(
+        ".opcion-comida"
+    );
+
+
+let comidaElegida = "";
+
+
+opcionesComida.forEach(
+    opcion => {
+
+        opcion.addEventListener(
+            "click",
+            () => {
+
+                opcionesComida
+                    .forEach(
+                        item => {
+
+                            item.classList
+                                .remove(
+                                    "seleccionada"
+                                );
+
+                        }
+                    );
+
+
+                opcion.classList
+                    .add(
+                        "seleccionada"
+                    );
+
+
+                comidaElegida =
+                    opcion.dataset.comida;
+
+
+                mostrarRespuestaComida(
+                    comidaElegida
+                );
+
+
+                document
+                    .getElementById(
+                        "btnDespuesComida"
+                    )
+                    .classList
+                    .add(
+                        "mostrar"
+                    );
+
+            }
+        );
+
     }
+);
+
+
+
+function mostrarRespuestaComida(
+    comida
+) {
+
+    const respuesta =
+        document.getElementById(
+            "respuestaComida"
+        );
+
+
+    const respuestas = {
+
+        pizza:
+            "Sabía que había algo importante que descubrir aquí. 🍕",
+
+        hamburguesa:
+            "Una elección bastante seria. 😂🍔",
+
+        sushi:
+            "Ok... veo que tenemos gustos interesantes. 🍣",
+
+        postre:
+            "No necesitaba más pruebas. El postre siempre tiene un lugar especial. 🍰"
+
+    };
+
+
+    respuesta.textContent =
+        respuestas[comida];
+
 }
 
 
-@keyframes aparecerHoja {
 
-    from {
-        opacity: 0;
+/* =====================================
+   DESPUÉS DE COMIDA
+===================================== */
 
-        transform: scale(0);
+document
+    .getElementById(
+        "btnDespuesComida"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            cambiarPantalla(
+                "eleccionFlor"
+            );
+
+        }
+    );
+
+
+
+/* =====================================
+   ELECCIÓN DE FLOR
+===================================== */
+
+const flores =
+    document.querySelectorAll(
+        ".flor-opcion"
+    );
+
+
+let florElegida = "";
+
+
+flores.forEach(
+    flor => {
+
+        flor.addEventListener(
+            "click",
+            () => {
+
+                flores.forEach(
+                    item => {
+
+                        item.classList
+                            .remove(
+                                "seleccionada"
+                            );
+
+                    }
+                );
+
+
+                flor.classList
+                    .add(
+                        "seleccionada"
+                    );
+
+
+                florElegida =
+                    flor.dataset.flor;
+
+
+                mostrarRespuestaFlor(
+                    florElegida
+                );
+
+
+                document
+                    .getElementById(
+                        "btnDespuesFlor"
+                    )
+                    .classList
+                    .add(
+                        "mostrar"
+                    );
+
+            }
+        );
+
     }
+);
 
-    to {
-        opacity: 1;
-    }
+
+
+function mostrarRespuestaFlor(
+    flor
+) {
+
+    const respuesta =
+        document.getElementById(
+            "respuestaFlor"
+        );
+
+
+    const respuestas = {
+
+        amarilla:
+            "Elegiste la protagonista de todo esto. 🌻",
+
+        blanca:
+            "Elegante elección. Aunque hoy la protagonista sigue siendo amarilla. 🤍",
+
+        rosa:
+            "Sabía que el rosa iba a aparecer en algún momento. 🌷"
+
+    };
+
+
+    respuesta.textContent =
+        respuestas[flor];
+
 }
 
 
-@keyframes crecerFlor {
 
-    from {
-        transform:
-            translateX(-50%)
-            scale(0);
+/* =====================================
+   IR AL MENSAJE
+===================================== */
+
+document
+    .getElementById(
+        "btnDespuesFlor"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            cambiarPantalla(
+                "mensaje"
+            );
+
+
+            setTimeout(
+                escribirMensaje,
+                700
+            );
+
+        }
+    );
+
+
+
+/* =====================================
+   MENSAJE PERSONAL
+===================================== */
+
+function escribirMensaje() {
+
+    const elemento =
+        document.getElementById(
+            "mensajeEscritura"
+        );
+
+
+    /*
+       AQUÍ PUEDES PERSONALIZAR
+       EL MENSAJE MÁS ADELANTE.
+    */
+
+    const texto = `Camila...
+
+No quería simplemente darte una flor amarilla.
+
+Quería hacer algo diferente.
+
+Algo que tuviera un poquito de mí
+y que, al mismo tiempo,
+tuviera cosas que me recuerdan a ti.
+
+Así que hice esto.
+
+No porque fuera necesario.
+
+Sino porque hay personas
+que hacen que uno quiera tener
+detalles bonitos con ellas.
+
+Y tú eres una de esas personas.
+
+Espero que sonrías un poquito
+cuando llegues hasta aquí.
+
+Feliz día de las Flores Amarillas. 🌻`;
+
+
+    let posicion = 0;
+
+
+    function escribir() {
+
+        if (
+            posicion <
+            texto.length
+        ) {
+
+            elemento.textContent +=
+                texto.charAt(posicion);
+
+
+            posicion++;
+
+
+            setTimeout(
+                escribir,
+                30
+            );
+
+        } else {
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "btnSecreto"
+                    )
+                    .classList
+                    .add(
+                        "mostrar"
+                    );
+
+            }, 1200);
+
+        }
+
     }
 
-    to {
-        transform:
-            translateX(-50%)
-            scale(1);
-    }
+
+    escribir();
+
 }
 
 
-@keyframes caer {
 
-    from {
-        transform:
-            translateY(0)
-            rotate(0deg);
+/* =====================================
+   EASTER EGG
+===================================== */
 
-        opacity: 1;
+document
+    .getElementById(
+        "btnSecreto"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            cambiarPantalla(
+                "terminal"
+            );
+
+
+            iniciarTerminal();
+
+        }
+    );
+
+
+
+/* =====================================
+   TERMINAL
+===================================== */
+
+function iniciarTerminal() {
+
+    const terminal =
+        document.getElementById(
+            "terminalTexto"
+        );
+
+
+    terminal.textContent = "";
+
+
+    const lineas = [
+
+        "> iniciando proyecto...",
+
+
+        "> cargando camila.js...",
+
+
+        "",
+
+
+        "> leyendo información...",
+
+
+        "",
+
+
+        "Nombre: Camila",
+
+
+        "Color principal: Rojo ❤️",
+
+
+        "Color secundario: Rosa claro 🌸",
+
+
+        "Actividad favorita: Comer 🍔",
+
+
+        "",
+
+
+        "> ejecutando análisis...",
+
+
+        "",
+
+
+        "> Buscando razón del detalle...",
+
+
+        "",
+
+
+        "ERROR 404:",
+
+
+        "Razón no encontrada.",
+
+
+        "",
+
+
+        "> intentando nuevamente...",
+
+
+        "",
+
+
+        "ERROR:",
+
+
+        "Demasiadas razones.",
+
+
+        "",
+
+
+        "> conclusión:",
+
+
+        "Era imposible no hacerle algo.",
+
+
+        "",
+
+
+        "> compilación completada ✓"
+
+    ];
+
+
+    let linea =
+        0;
+
+
+    function escribirLinea() {
+
+        if (
+            linea <
+            lineas.length
+        ) {
+
+            terminal.textContent +=
+                lineas[linea]
+                + "\n";
+
+
+            linea++;
+
+
+            setTimeout(
+                escribirLinea,
+                250
+            );
+
+        } else {
+
+            setTimeout(() => {
+
+                document
+                    .getElementById(
+                        "btnFinal"
+                    )
+                    .classList
+                    .add(
+                        "mostrar"
+                    );
+
+            }, 1000);
+
+        }
+
     }
 
-    to {
-        transform:
-            translateY(110vh)
-            rotate(360deg);
 
-        opacity: 0;
-    }
+    escribirLinea();
+
 }
 
 
-@keyframes aparecerFinal {
 
-    from {
-        opacity: 0;
+/* =====================================
+   FINAL
+===================================== */
 
-        transform: scale(0.8);
+document
+    .getElementById(
+        "btnFinal"
+    )
+    .addEventListener(
+        "click",
+        () => {
+
+            cambiarPantalla(
+                "final"
+            );
+
+
+            explosionFlores();
+
+
+            personalizarFinal();
+
+        }
+    );
+
+
+
+/* =====================================
+   FINAL DINÁMICO
+===================================== */
+
+function personalizarFinal() {
+
+    const mensaje =
+        document.getElementById(
+            "mensajeFinal"
+        );
+
+
+    if (
+        comidaElegida ===
+        "postre"
+    ) {
+
+        mensaje.textContent =
+            "Y espero que después de todo esto, también encuentres algo rico para comer. 🍰💛";
+
     }
 
-    to {
-        opacity: 1;
+    else if (
+        comidaElegida ===
+        "hamburguesa"
+    ) {
 
-        transform: scale(1);
+        mensaje.textContent =
+            "Ahora solo falta cumplir una de las cosas importantes: conseguir algo rico para comer. 🍔💛";
+
     }
+
+    else {
+
+        mensaje.textContent =
+            "Espero que hoy recibas aunque sea una pequeña parte de todo lo bonito que mereces. 💛";
+
+    }
+
 }
 
 
-/* =========================
-   CELULAR
-========================= */
 
-@media (max-width: 600px) {
+/* =====================================
+   EXPLOSIÓN DE FLORES
+===================================== */
 
-    .tarjeta {
-        width: 100px;
-        height: 150px;
-    }
+function explosionFlores() {
 
-    .frente {
-        font-size: 2.2rem;
-    }
+    const elementos = [
+        "🌻",
+        "🌼",
+        "🌻",
+        "💛",
+        "✨"
+    ];
 
-    .atras {
-        padding: 10px;
-    }
 
-    .atras h3 {
-        font-size: 1rem;
-    }
+    for (
+        let i = 0;
+        i < 40;
+        i++
+    ) {
 
-    .atras p {
-        font-size: 0.7rem;
-    }
+        const elemento =
+            document.createElement(
+                "div"
+            );
 
-    .carta {
-        font-size: 1.05rem;
-        line-height: 1.8;
-    }
 
-    #terminalTexto {
-        font-size: 0.78rem;
+        elemento.className =
+            "petalito";
 
-        min-height: 300px;
 
-        padding: 20px;
+        elemento.textContent =
+            elementos[
+                Math.floor(
+                    Math.random()
+                    * elementos.length
+                )
+            ];
+
+
+        elemento.style.left =
+            Math.random()
+            * 100 + "vw";
+
+
+        elemento.style.fontSize =
+            15 +
+            Math.random() * 20
+            + "px";
+
+
+        elemento.style.animationDuration =
+            4 +
+            Math.random() * 5
+            + "s";
+
+
+        document.body
+            .appendChild(
+                elemento
+            );
+
+
+        setTimeout(() => {
+
+            elemento.remove();
+
+        }, 10000);
+
     }
 
 }
